@@ -51,7 +51,7 @@ $(document).ready(function(){
                     this.items.forEach(function(item) {
                         if (!item.completed) {
                             Items.push(item);
-                            console.log(item.completed);
+//                             console.log(item.completed);
                         } 
                     })
                     return Items;   
