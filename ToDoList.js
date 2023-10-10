@@ -1,24 +1,27 @@
 $(document).ready(function(){
+
     new Vue({
         el:'#list',
         data:{
             listItem:'',    /* 用來儲存user輸入的任務 */
             status: 'no',   /* 預設任務狀態為未完成 */
-            items:[{
-                id: '',
-                text: '',
-                completed: false
-            }]
+            items:[
+                // {   
+                //     id: '',
+                //     text: '',            /* 留著為了可查看項目格式 */
+                //     completed: false
+                // }
+            ]
         },
         methods:{
             /* 新增任務 */
             add:function() {
-                var text = this.listItem.trim();
-                var id = Date.now();
-                if (!text) { return false }
+                const text = this.listItem.trim();
+                const id = Date.now();
+                if (!text) { return }
                 this.items.push({
-                    id: id,
-                    text: text,
+                    id,
+                    text,
                     computed: false  
                 });
                 this.listItem = '';
@@ -29,7 +32,7 @@ $(document).ready(function(){
                 if (!confirm("要刪除嗎？")) {
                     return false
                 }
-                else {this.items.splice(index, 1);} /* 從此任務開始刪除，到這個任務為止。 */
+                else {this.items.splice(this.items.indexOf(index), 1);} /* 從此任務開始刪除，到這個任務為止。 */
             },
             removeAll:function(index) {   
                 if (!confirm("要刪除全部任務嗎？")) {
@@ -51,7 +54,6 @@ $(document).ready(function(){
                     this.items.forEach(function(item) {
                         if (!item.completed) {
                             Items.push(item);
-//                             console.log(item.completed);
                         } 
                     })
                     return Items;   
@@ -75,6 +77,9 @@ $(document).ready(function(){
                     $('h2').css("background-color", "#858585");
                     return this.items;
                 }
+            },
+            itemLength() {
+                return this.items.filter(item => !item.completed).length;
             }
         }    
     });
