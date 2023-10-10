@@ -23,16 +23,17 @@
         </aside>    
         <h2>To&nbsp;Do&nbsp;List</h2>    
         <section>
-            <input type="text" v-model="listItem" placeholder="請輸入任務名稱...">
+            <input type="text" placeholder="請輸入任務名稱..." v-model="listItem" @keydown.enter="add">
             <button type="button" id="add" @click="add">+</button>
             <ol>
                 <li v-for="(item, index) in filterItems" v-if="item.text !=''">
                     <input type="checkbox" v-model="item.completed">                   
                     <label :class="{ 'completed':item.completed }">&nbsp;{{ item.text }}</label>
-                    &nbsp;<button type="button" id="remove" @click="remove(index)">×</button>                                                              
+                    &nbsp;<button type="button" id="remove" @click="remove(item)">×</button>             
                 </li>
             </ol>   
             <button type="button" id="removeAll" @click="removeAll(index)">刪除全部任務</button>  
+            <p class="tip" v-if="itemLength !== 0">當前清單有 {{ itemLength }} 個未完成項目</p>
         </section>       
     </main>   
     <div id="topButton" title="到頂端">Λ</div>     
