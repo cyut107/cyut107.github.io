@@ -82,6 +82,13 @@ h2 {
     transition: 0.7s;
 }
 
+/* 結尾未完成項目提示 */
+.tip {
+    margin-bottom: 0;
+    color: rgb(113 113 122);
+    font-size: 14px;
+}
+
 /* 任務主體 */
 section {
     background-color: #ffffff;
@@ -177,7 +184,7 @@ input[type="checkbox"] {
     text-align: right;
     border: none;
     border-radius: 5px;
-    outline: none;    
+    outline: none;   
     background-color: #A90007;
     box-shadow:2px 2px 0px #7A0000;  
 }
@@ -194,6 +201,7 @@ input[type="checkbox"] {
     font-weight: 700;
     border: none;
     border-radius: 5px;
+    padding: 1% 2%;
     outline: none;    
     background-color: #A90007;
     box-shadow:2px 2px 0px #7A0000;  
