@@ -26,10 +26,10 @@
             <input type="text" placeholder="請輸入任務名稱..." v-model="listItem" @keydown.enter="add">
             <button type="button" id="add" @click="add">+</button>
             <ol>
-                <li v-for="(item, index) in filterItems" v-if="item.text !=''">
-                    <input type="checkbox" v-model="item.completed">                   
-                    <label :class="{ 'completed':item.completed }">&nbsp;{{ item.text }}</label>
-                    &nbsp;<button type="button" id="remove" @click="remove(item)">×</button>             
+                <li v-for="(item, index) in filterItems" :key="item.id" v-if="item.text.trim() !== ''">
+                    <input type="checkbox" v-model="item.completed">
+                    <label :class="{ 'completed': item.completed }">{{ item.text }}</label>
+                    &nbsp;<button type="button" class="remove" @click="remove(item)">×</button>
                 </li>
             </ol>   
             <button type="button" id="removeAll" @click="removeAll(index)">刪除全部任務</button>  
